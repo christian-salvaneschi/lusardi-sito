@@ -1,0 +1,96 @@
+====================================================================
+LUSARDI CALCESTRUZZI — SITO STATICO — ISTRUZIONI
+====================================================================
+
+FILE INCLUSI
+  index.html      -> Home
+  servizi.html    -> I nostri servizi
+  impianti.html   -> I nostri impianti + CERTIFICAZIONI (aggiornabili)
+  contatti.html   -> Contatti (form + mappa)
+  style.css       -> grafica condivisa da tutte le pagine
+  script.js       -> logica condivisa (menu, certificazioni, form)
+
+  Tieni SEMPRE tutti i file nella STESSA cartella.
+  Per vederlo sul tuo PC: apri index.html con un doppio clic.
+  (Nota: aprendo il file in locale, la lettura del Foglio Google e la
+   mappa potrebbero essere bloccate dal browser: funzionano tutte una
+   volta pubblicato online, vedi sezione HOSTING.)
+
+====================================================================
+1) CERTIFICAZIONI AGGIORNABILI DAL CLIENTE (Foglio Google -> sito)
+====================================================================
+Finché non colleghi il foglio, la pagina Impianti mostra i certificati
+REALI già inseriti nel codice (con un piccolo avviso "dati di esempio").
+Per rendere l'elenco modificabile dal cliente:
+
+A) PREPARA IL FOGLIO
+   1. Crea un nuovo Foglio Google.
+   2. Riga 1 = intestazioni. Usa queste colonne (ordine libero, maiuscole
+      e spazi indifferenti — il sito le riconosce automaticamente):
+
+        Certificazione | Ente | Numero | Validità | Link
+
+   3. Dalla riga 2, una certificazione per riga. Esempio già pronto:
+
+    Certificazione                              | Ente  | Numero        | Validità             | Link
+    Calcestruzzo CAM — Casarza Ligure           | ICMQ  | P854          | In corso di validità |
+    Calcestruzzo CAM — Mezzanego                | ICMQ  | P855          | In corso di validità |
+    Controllo produzione FPC — CLS preconf.     | ICMQ  | ICMQ-CLS00880 | In corso di validità |
+    Sistema Qualità UNI EN ISO 9001:2015        |       | 22576         | In corso di validità |
+    ISO 9001 — IQNet                            | IQNet | IT-104827     | In corso di validità |
+    Aggregati per calcestruzzo e ingegneria     |       | 1305-CPR-1406 | In corso di validità |
+
+      - "Link" è opzionale: se metti l'URL del PDF del certificato, sul
+        sito compare "documento". Se lo lasci vuoto, non appare nulla.
+      - Il cliente per aggiornare tocca SOLO le righe. Nient'altro.
+
+B) PUBBLICA IL FOGLIO IN CSV
+   1. File  ->  Condividi  ->  Pubblica sul web
+   2. Scegli la scheda giusta e il formato "Valori separati da virgole (.csv)"
+   3. "Pubblica" e copia l'URL (finisce con  output=csv ).
+
+C) COLLEGA
+   1. Apri script.js con un editor di testo.
+   2. Alla riga:   const SHEET_CSV_URL = "";
+      incolla l'URL tra le virgolette:
+                    const SHEET_CSV_URL = "https://docs.google.com/.../pub?...output=csv";
+   3. Salva. Ricarica la pagina Impianti: l'elenco ora arriva dal foglio.
+      Da quel momento il cliente aggiorna il foglio e il sito si aggiorna
+      da solo (le modifiche di Google possono metterci qualche minuto).
+
+====================================================================
+2) FORM CONTATTI (opzionale) — invio e-mail gratis con Web3Forms
+====================================================================
+   1. Vai su web3forms.com, inserisci  lusardicls@gmail.com , ottieni una
+      "access key" gratuita.
+   2. In script.js imposta:
+        const FORM_ENDPOINT = "https://api.web3forms.com/submit";
+   3. In contatti.html, dentro il <form id="contactForm">, aggiungi:
+        <input type="hidden" name="access_key" value="LA-TUA-ACCESS-KEY">
+   Fatto: le richieste arrivano via e-mail. (Alternativa equivalente: Formspree.io)
+
+====================================================================
+3) HOSTING — 0 € ricorrenti oltre al dominio
+====================================================================
+   CLOUDFLARE PAGES (consigliato)
+     1. Account gratuito su pages.cloudflare.com
+     2. "Create a project" -> "Direct Upload" -> trascina TUTTI i file
+        (o l'intera cartella). HTTPS e CDN inclusi, gratis.
+     3. Colleghi poi il dominio lusardicalcestruzzi.com.
+   Alternative gratuite equivalenti: Netlify (netlify.com), GitHub Pages.
+
+   DOMINIO
+     Unico costo ricorrente (~10-15 €/anno). Se oggi è gestito da
+     Italiaonline, trasferiscilo a un registrar indipendente
+     (es. Cloudflare Registrar, a prezzo di costo) PRIMA di disdire,
+     per non perderlo.
+
+====================================================================
+4) DA PERSONALIZZARE
+====================================================================
+   - LOGO: ora è testuale (segnaposto). Sostituiscilo con l'immagine reale
+     quando l'hai in alta risoluzione.
+   - FOTO: si possono aggiungere immagini di impianti/manufatti nelle
+     sezioni "card".
+   - PRIVACY: linka l'informativa privacy reale sotto il form.
+====================================================================

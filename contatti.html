@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contatti — Lusardi Calcestruzzi — Casarza Ligure (GE)</title>
+<meta name="description" content="Contatta Lusardi Calcestruzzi srl a Casarza Ligure (GE). Telefono 0185 46266, e-mail lusardicls@gmail.com. Richiedi un preventivo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav">
+    <a href="index.html" class="brand"><span class="tick"></span>LUSARDI CALCESTRUZZI</a>
+    <ul id="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="servizi.html">Servizi</a></li>
+      <li><a href="impianti.html">Impianti</a></li>
+      <li><a href="contatti.html" class="active">Contatti</a></li>
+    </ul>
+    <a class="call" href="tel:+39018546266">☎ 0185 46266</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<div class="phero">
+  <div class="wrap">
+    <div class="loc">Contatti</div>
+    <h1>Parliamo del<br>tuo cantiere.</h1>
+    <p>Chiama per un preventivo o scrivici: valutiamo insieme prodotto, quantità e consegna.</p>
+  </div>
+</div>
+
+<section class="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="info-block">
+          <div class="code">Sede e impianto</div>
+          <p class="big" style="font-size:18px">Via per Masso, 10<br>16030 Casarza Ligure (GE)</p>
+        </div>
+        <div class="info-block">
+          <div class="code">Secondo impianto</div>
+          <p style="font-size:16px">Loc. Costa del Canale, 81 — Mezzanego (GE)</p>
+        </div>
+        <div class="info-block">
+          <div class="code">Telefono</div>
+          <a class="big" href="tel:+39018546266">+39 0185 46266</a>
+        </div>
+        <div class="info-block">
+          <div class="code">E-mail</div>
+          <a class="big" href="mailto:lusardicls@gmail.com">lusardicls@gmail.com</a>
+        </div>
+        <div class="info-block">
+          <div class="code">Dati societari</div>
+          <p style="font-size:15px">Lusardi Calcestruzzi srl · P.IVA 01069330999</p>
+        </div>
+      </div>
+      <div>
+        <div class="code" style="margin-bottom:8px">Scrivici</div>
+        <form id="contactForm">
+          <label for="nome">Nome e cognome *</label>
+          <input id="nome" name="nome" required>
+          <label for="email">E-mail *</label>
+          <input id="email" name="email" type="email" required>
+          <label for="tel">Telefono</label>
+          <input id="tel" name="telefono">
+          <label for="msg">Messaggio *</label>
+          <textarea id="msg" name="messaggio" required></textarea>
+          <div class="consent">
+            <input id="privacy" type="checkbox" required>
+            <label for="privacy">Ho letto l'informativa e autorizzo il trattamento dei miei dati personali per le finalità indicate. *</label>
+          </div>
+          <button class="btn btn-y" type="submit">Invia richiesta</button>
+          <div class="form-msg" id="formMsg"></div>
+        </form>
+      </div>
+    </div>
+
+    <div style="margin-top:48px">
+      <div class="code" style="margin-bottom:10px">Dove siamo</div>
+      <iframe class="map-embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Mappa sede Lusardi Calcestruzzi"
+        src="https://www.google.com/maps?q=Via%20per%20Masso%2010%2C%2016030%20Casarza%20Ligure%20GE&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><span class="tick"></span>LUSARDI CALCESTRUZZI</div>
+        <p>Calcestruzzo preconfezionato, manufatti e aggregati da riciclo. Casarza Ligure (GE).</p>
+      </div>
+      <div>
+        <h4>Pagine</h4>
+        <nav><a href="index.html">Home</a><a href="servizi.html">Servizi</a><a href="impianti.html">Impianti e certificazioni</a><a href="contatti.html">Contatti</a></nav>
+      </div>
+      <div>
+        <h4>Sede</h4>
+        <p>Via per Masso, 10<br>16030 Casarza Ligure (GE)</p>
+      </div>
+      <div>
+        <h4>Recapiti</h4>
+        <p><a href="tel:+39018546266">+39 0185 46266</a><br><a href="mailto:lusardicls@gmail.com">lusardicls@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© <span id="year"></span> Lusardi Calcestruzzi srl · P.IVA 01069330999</span>
+      <span>Casarza Ligure (GE) · Liguria</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
