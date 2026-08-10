@@ -126,24 +126,20 @@ section{padding:76px 0}
 .cert .sec-head h2{color:var(--bianco)}
 .cert .rule{background:var(--linea-scura)}
 .cert .intro{color:var(--grigio-ch);max-width:660px;margin-bottom:30px;font-size:16px}
-#certContent{overflow-x:auto}
-.cert-table{width:100%;min-width:1120px;border-collapse:collapse}
-.cert-table thead th{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--giallo);text-align:left;padding:0 16px 12px;border-bottom:2px solid var(--giallo)}
-.cert-table tbody td{padding:18px 16px;border-bottom:1px solid var(--linea-scura);vertical-align:top;font-size:15px}
-.cert-table tbody tr:hover{background:#1b1e23}
-.cert-table .c-nome{font-family:var(--display);font-weight:800;font-size:17px}
-.cert-table .c-cat{color:var(--grigio-ch);font-family:var(--mono);font-size:12px}
-.cert-table .c-tipo{color:var(--chiaro);font-weight:600}
-.cert-table .c-sito{color:var(--chiaro);font-weight:600}
-.cert-table .c-ente{color:var(--chiaro)}
-.cert-table .c-num{font-family:var(--mono);font-size:13px;color:var(--grigio-ch)}
-.cert-table .c-val{color:var(--chiaro)}
-.badge{display:inline-block;background:var(--giallo);color:var(--nero);font-family:var(--display);font-weight:800;font-size:11px;letter-spacing:.05em;padding:3px 9px;text-transform:uppercase}
-.cert-link{color:var(--giallo);font-family:var(--mono);font-size:13px;border-bottom:1px solid transparent}
-.cert-link:hover{border-color:var(--giallo)}
+#certContent{max-width:920px}
+.cert-section{padding:28px 0 8px;border-top:1px solid var(--linea-scura)}
+.cert-section:first-child{padding-top:0;border-top:0}
+.cert-section h3{font-family:var(--display);font-size:clamp(22px,3vw,30px);line-height:1.15;margin-bottom:14px;color:var(--bianco)}
+.cert-section h3::after{content:"";display:block;width:42px;height:3px;background:var(--giallo);margin-top:10px}
+.cert-list{display:grid;gap:10px}
+.cert-item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;padding:16px 18px;background:#1b1e23;border-left:3px solid var(--linea-scura)}
+.cert-item:hover{border-left-color:var(--giallo)}
+.cert-copy h4{font-family:var(--display);font-size:17px;line-height:1.2;color:var(--bianco)}
+.cert-copy p{font-family:var(--mono);font-size:11px;line-height:1.6;color:var(--grigio-ch);margin-top:6px}
+.cert-link{min-width:170px;background:var(--giallo);color:var(--nero);font-family:var(--display);font-weight:800;font-size:13px;text-align:center;padding:11px 16px;transition:.15s}
+.cert-link:hover{background:var(--bianco)}
 .cert-state{padding:40px 16px;font-family:var(--mono);font-size:14px;color:var(--grigio-ch);border:1px dashed var(--linea-scura)}
 .cert-state.err{color:#ffb0a8;border-color:#4a2a28}
-.demo-note{display:inline-block;margin-bottom:22px;background:var(--linea-scura);color:var(--giallo);font-family:var(--mono);font-size:12px;letter-spacing:.04em;padding:8px 14px}
 
 /* =============== CONTATTI =============== */
 .contact{background:var(--chiaro)}
@@ -197,12 +193,8 @@ footer nav a{display:block}
   .svc .idx{font-size:32px}
   .hero .wrap{padding-right:24px}
   .hero-logo{position:relative;right:auto;bottom:auto;width:min(100%,560px);margin:34px auto 0;transform:none}
-  #certContent{overflow:visible}
-  .cert-table,.cert-table thead,.cert-table tbody,.cert-table tr,.cert-table td{display:block;width:100%;min-width:0}
-  .cert-table thead{display:none}
-  .cert-table tr{border:1px solid var(--linea-scura);margin-bottom:14px;padding:6px 0}
-  .cert-table td{border:0!important;padding:8px 16px}
-  .cert-table td::before{content:attr(data-l);display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--giallo);margin-bottom:2px}
+  .cert-item{grid-template-columns:1fr;gap:14px}
+  .cert-link{width:100%;min-width:0}
 }
 @media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}

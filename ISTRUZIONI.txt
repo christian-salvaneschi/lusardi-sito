@@ -19,9 +19,8 @@ FILE INCLUSI
 ====================================================================
 1) CERTIFICAZIONI AGGIORNABILI DAL CLIENTE (Foglio Google -> sito)
 ====================================================================
-Finché non colleghi il foglio, la pagina Impianti mostra i certificati
-REALI già inseriti nel codice (con un piccolo avviso "dati di esempio").
-Per rendere l'elenco modificabile dal cliente:
+La pagina Impianti legge direttamente il Foglio Google pubblicato in CSV.
+Per aggiornare l'elenco:
 
 A) PREPARA IL FOGLIO
    1. Carica su Google Drive il file certificazioni-google-sheets.csv
@@ -29,8 +28,11 @@ A) PREPARA IL FOGLIO
    2. Riga 1 = intestazioni. Usa queste colonne (ordine libero, maiuscole
       e spazi indifferenti — il sito le riconosce automaticamente):
 
-        Categoria | Elemento | Sito | Tipo_documento | Ente |
+        Sezione | Categoria | Elemento | Sito | Tipo_documento | Ente |
         Riferimento | Stato_validita | Link
+
+      Le righe vengono mostrate nell'ordine del foglio. Quando cambia il
+      valore di "Sezione", il sito apre automaticamente un nuovo blocco.
 
    3. Dalla riga 2, una certificazione per riga. Esempio già pronto:
 

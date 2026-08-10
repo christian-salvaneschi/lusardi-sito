@@ -1,26 +1,12 @@
 /* =========================================================
    LUSARDI CALCESTRUZZI — script condiviso
    =========================================================
-   1) SHEET_CSV_URL: incolla qui l'URL del Foglio Google pubblicato in CSV.
-      Finché è vuoto, la sezione Certificazioni mostra i dati di esempio
-      (che sono i certificati reali già inseriti qui sotto).
+   1) SHEET_CSV_URL: URL del Foglio Google pubblicato in CSV.
    2) FORM_ENDPOINT: invio del form tramite FormSubmit.
    Istruzioni complete nel file ISTRUZIONI.txt.
    ========================================================= */
 const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRO61M4is-HQLUM7ejfXmIalrY6VIAG2alCVq79tHAxuF5ls9H9uTXTfJsQEfrdDgX2ExDgjYOw8ErV/pub?output=csv";
 const FORM_ENDPOINT = "https://formsubmit.co/ajax/chrjs75@gmail.com";
-
-/* Certificati reali dell'azienda — usati finché il foglio non è collegato.
-   Sono anche il modello esatto delle colonne del foglio. */
-const DEMO = [
-  {certificazione:"Calcestruzzo CAM", sito:"Casarza Ligure", ente:"ICMQ", numero:"P854", validita:"In corso di validità", link:""},
-  {certificazione:"Calcestruzzo CAM", sito:"Mezzanego", ente:"ICMQ", numero:"P855", validita:"In corso di validità", link:""},
-  {certificazione:"Controllo produzione FPC", sito:"Casarza Ligure", ente:"ICMQ", numero:"ICMQ-CLS-00881", validita:"In corso di validità", link:""},
-  {certificazione:"Controllo produzione FPC", sito:"Mezzanego", ente:"ICMQ", numero:"ICMQ-CLS00880", validita:"In corso di validità", link:""},
-  {certificazione:"Sistema Qualità UNI EN ISO 9001:2015", sito:"", ente:"—", numero:"22576", validita:"In corso di validità", link:""},
-  {certificazione:"ISO 9001", sito:"", ente:"IQNet", numero:"IT-104827", validita:"In corso di validità", link:""},
-  {certificazione:"Aggregati per calcestruzzo e opere di ingegneria", sito:"", ente:"—", numero:"1305-CPR-1406", validita:"In corso di validità", link:""}
-];
 
 /* ---------- parser CSV (gestisce virgole tra virgolette) ---------- */
 function parseCSV(text){
@@ -47,11 +33,12 @@ function rowsToObjects(rows){
   if(!rows.length)return[];
   const head=rows[0].map(h=>h.trim().toLowerCase());
   const idx=k=>head.findIndex(h=>h.startsWith(k));
-  const iCategoria=idx("categoria"), iElemento=idx("elemento"), iTipo=idx("tipo"),
+  const iSezione=idx("sezione"), iCategoria=idx("categoria"), iElemento=idx("elemento"), iTipo=idx("tipo"),
     iCert=idx("certif"), iSito=idx("sito"), iEnte=idx("ente"),
     iNum=idx("numero"), iRif=idx("riferimento"), iVal=idx("valid"),
     iStato=idx("stato"), iLink=idx("link");
   return rows.slice(1).map(r=>({
+    sezione:(iSezione>=0?r[iSezione]:"").trim(),
     categoria:(iCategoria>=0?r[iCategoria]:"").trim(),
     certificazione:(iElemento>=0?r[iElemento]:(iCert>=0?r[iCert]:"")).trim(),
     sito:(iSito>=0?r[iSito]:"").trim(),
@@ -69,40 +56,38 @@ function renderCerts(list){
   const box=document.getElementById("certContent");
   if(!box)return;
   if(!list.length){box.innerHTML='<div class="cert-state">Nessuna certificazione presente al momento.</div>';return;}
-  const schemaEsteso=list.some(c=>c.tipo||c.categoria);
-  let html='<table class="cert-table"><thead><tr>'
-    +(schemaEsteso?'<th>Categoria</th><th>Elemento</th><th>Documento</th>':'<th>Certificazione</th>')
-    +'<th>Sito</th><th>Ente</th><th>Riferimento</th><th>Validità</th><th></th></tr></thead><tbody>';
+  let html='', sezioneCorrente=null;
   for(const c of list){
+    const sezione=c.sezione||'Certificazioni';
+    if(sezione!==sezioneCorrente){
+      if(sezioneCorrente!==null)html+='</div></section>';
+      html+='<section class="cert-section"><h3>'+esc(sezione)+'</h3><div class="cert-list">';
+      sezioneCorrente=sezione;
+    }
     const linkUrl=c.link.replace('export=download','export=view');
-    const linkCell=linkUrl?'<a class="cert-link" href="'+esc(linkUrl)+'" target="_blank" rel="noopener">documento ↗</a>':'';
-    html+='<tr>'
-      +(schemaEsteso?'<td data-l="Categoria" class="c-cat">'+(esc(c.categoria)||'—')+'</td>':'')
-      +'<td data-l="'+(schemaEsteso?'Elemento':'Certificazione')+'" class="c-nome">'+esc(c.certificazione)+'</td>'
-      +(schemaEsteso?'<td data-l="Documento" class="c-tipo">'+(esc(c.tipo)||'—')+'</td>':'')
-      +'<td data-l="Sito" class="c-sito">'+(esc(c.sito)||'—')+'</td>'
-      +'<td data-l="Ente" class="c-ente">'+(esc(c.ente)||'—')+'</td>'
-      +'<td data-l="Riferimento" class="c-num">'+(esc(c.numero)||'—')+'</td>'
-      +'<td data-l="Validità" class="c-val">'+(c.validita?'<span class="badge">'+esc(c.validita)+'</span>':'')+'</td>'
-      +'<td data-l="Documento">'+linkCell+'</td>'
-      +'</tr>';
+    const tipo=(c.tipo||'Certificato').toLowerCase();
+    const label=tipo==='dop'?'Vai alla DOP':tipo.includes('marcatura ce')?'Vai alla CE':'Vai al certificato';
+    const meta=[c.tipo,c.ente,c.numero,c.validita].filter(Boolean).map(esc).join(' · ');
+    const linkCell=linkUrl?'<a class="cert-link" href="'+esc(linkUrl)+'" target="_blank" rel="noopener">'+label+' ↗</a>':'';
+    html+='<article class="cert-item"><div class="cert-copy">'
+      +'<h4>'+esc(c.certificazione)+'</h4>'
+      +(meta?'<p>'+meta+'</p>':'')
+      +'</div>'+linkCell+'</article>';
   }
-  html+='</tbody></table>';
+  if(sezioneCorrente!==null)html+='</div></section>';
   box.innerHTML=html;
 }
 
 async function loadCerts(){
   const box=document.getElementById("certContent");
   if(!box)return;
-  const demoNote=document.getElementById("demoNote");
-  if(!SHEET_CSV_URL){ if(demoNote)demoNote.hidden=false; renderCerts(DEMO); return; }
+  if(!SHEET_CSV_URL){box.innerHTML='<div class="cert-state err">Registro certificazioni non configurato.</div>';return;}
   try{
     const res=await fetch(SHEET_CSV_URL,{cache:"no-store"});
     if(!res.ok)throw new Error("HTTP "+res.status);
     renderCerts(rowsToObjects(parseCSV(await res.text())));
   }catch(e){
-    if(demoNote){demoNote.hidden=false;demoNote.textContent="◆ Foglio non raggiungibile ora — mostrati i certificati salvati nel sito";}
-    renderCerts(DEMO);
+    box.innerHTML='<div class="cert-state err">Certificazioni temporaneamente non disponibili.</div>';
     console.warn("Certificazioni:",e);
   }
 }
