@@ -4,17 +4,18 @@
    1) SHEET_CSV_URL: incolla qui l'URL del Foglio Google pubblicato in CSV.
       Finché è vuoto, la sezione Certificazioni mostra i dati di esempio
       (che sono i certificati reali già inseriti qui sotto).
-   2) FORM_ENDPOINT: opzionale, per attivare l'invio del form (Web3Forms).
+   2) FORM_ENDPOINT: invio del form tramite FormSubmit.
    Istruzioni complete nel file ISTRUZIONI.txt.
    ========================================================= */
 const SHEET_CSV_URL = ""; // es: "https://docs.google.com/spreadsheets/d/e/XXXX/pub?gid=0&single=true&output=csv"
-const FORM_ENDPOINT = ""; // es: "https://api.web3forms.com/submit"
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/chrjs75@gmail.com";
 
 /* Certificati reali dell'azienda — usati finché il foglio non è collegato.
    Sono anche il modello esatto delle colonne del foglio. */
 const DEMO = [
   {certificazione:"Calcestruzzo CAM — Casarza Ligure",          ente:"ICMQ",  numero:"P854",           validita:"In corso di validità", link:""},
   {certificazione:"Calcestruzzo CAM — Mezzanego",               ente:"ICMQ",  numero:"P855",           validita:"In corso di validità", link:""},
+  {certificazione:"Controllo produzione FPC — Casarza Ligure", ente:"ICMQ",  numero:"ICMQ-CLS-00881", validita:"In corso di validità", link:""},
   {certificazione:"Controllo produzione FPC — CLS preconfezionato", ente:"ICMQ", numero:"ICMQ-CLS00880", validita:"In corso di validità", link:""},
   {certificazione:"Sistema Qualità UNI EN ISO 9001:2015",       ente:"—",     numero:"22576",          validita:"In corso di validità", link:""},
   {certificazione:"ISO 9001 — IQNet",                           ente:"IQNet", numero:"IT-104827",      validita:"In corso di validità", link:""},
@@ -100,18 +101,22 @@ function initForm(){
   form.addEventListener("submit",async function(ev){
     ev.preventDefault();
     const msg=document.getElementById("formMsg");
-    if(!FORM_ENDPOINT){
-      msg.className="form-msg ok";
-      msg.textContent="Modulo non ancora collegato. Per ora scrivici a lusardicls@gmail.com o chiama lo 0185 46266.";
-      return;
-    }
+    const button=form.querySelector('button[type="submit"]');
+    button.disabled=true;
+    button.textContent="Invio in corso…";
+    msg.className="form-msg";
+    msg.textContent="";
     try{
       const r=await fetch(FORM_ENDPOINT,{method:"POST",body:new FormData(form),headers:{Accept:"application/json"}});
-      if(!r.ok)throw 0;
+      const data=await r.json().catch(()=>({}));
+      if(!r.ok||data.success===false)throw new Error(data.message||"Invio non riuscito");
       form.reset();
       msg.className="form-msg ok";msg.textContent="Grazie, messaggio inviato. Ti risponderemo il prima possibile.";
     }catch(_){
-      msg.className="form-msg ko";msg.textContent="Errore durante l'invio. Riprova o scrivici a lusardicls@gmail.com.";
+      msg.className="form-msg ko";msg.textContent="Invio non riuscito. Riprova oppure scrivi a lusardicls@gmail.com.";
+    }finally{
+      button.disabled=false;
+      button.textContent="Invia richiesta";
     }
   });
 }

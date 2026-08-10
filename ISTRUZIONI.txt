@@ -4,8 +4,8 @@ LUSARDI CALCESTRUZZI — SITO STATICO — ISTRUZIONI
 
 FILE INCLUSI
   index.html      -> Home
-  servizi.html    -> I nostri servizi
-  impianti.html   -> I nostri impianti + CERTIFICAZIONI (aggiornabili)
+  i-nostri-servizi.html  -> I nostri servizi
+  i-nostri-impianti.html -> I nostri impianti + CERTIFICAZIONI (aggiornabili)
   contatti.html   -> Contatti (form + mappa)
   style.css       -> grafica condivisa da tutte le pagine
   script.js       -> logica condivisa (menu, certificazioni, form)
@@ -24,7 +24,8 @@ REALI già inseriti nel codice (con un piccolo avviso "dati di esempio").
 Per rendere l'elenco modificabile dal cliente:
 
 A) PREPARA IL FOGLIO
-   1. Crea un nuovo Foglio Google.
+   1. Carica su Google Drive il file certificazioni-google-sheets.csv
+      e aprilo con Fogli Google.
    2. Riga 1 = intestazioni. Usa queste colonne (ordine libero, maiuscole
       e spazi indifferenti — il sito le riconosce automaticamente):
 
@@ -59,15 +60,11 @@ C) COLLEGA
       da solo (le modifiche di Google possono metterci qualche minuto).
 
 ====================================================================
-2) FORM CONTATTI (opzionale) — invio e-mail gratis con Web3Forms
+2) FORM CONTATTI — invio e-mail con FormSubmit
 ====================================================================
-   1. Vai su web3forms.com, inserisci  lusardicls@gmail.com , ottieni una
-      "access key" gratuita.
-   2. In script.js imposta:
-        const FORM_ENDPOINT = "https://api.web3forms.com/submit";
-   3. In contatti.html, dentro il <form id="contactForm">, aggiungi:
-        <input type="hidden" name="access_key" value="LA-TUA-ACCESS-KEY">
-   Fatto: le richieste arrivano via e-mail. (Alternativa equivalente: Formspree.io)
+   Il form invia le richieste a chrjs75@gmail.com tramite FormSubmit.
+   Al primo invio FormSubmit manda un'e-mail di attivazione: aprila e
+   conferma il collegamento. Questa operazione serve una sola volta.
 
 ====================================================================
 3) HOSTING — 0 € ricorrenti oltre al dominio
