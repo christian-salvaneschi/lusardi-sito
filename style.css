@@ -32,7 +32,7 @@ img{max-width:100%;display:block}
 header{position:sticky;top:0;z-index:50;background:var(--nero);border-bottom:3px solid var(--giallo)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
 .brand{font-family:var(--display);font-weight:900;color:var(--bianco);font-size:20px;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
-.brand .tick{width:14px;height:14px;background:var(--giallo);display:inline-block;transform:skewX(-12deg)}
+.brand-icon{width:17px;height:17px;display:block;flex:0 0 17px}
 .nav ul{display:flex;gap:28px;list-style:none}
 .nav ul a{color:var(--chiaro);font-weight:500;font-size:14px;letter-spacing:.02em;padding:6px 0;position:relative}
 .nav ul a:hover{color:var(--bianco)}
