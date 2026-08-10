@@ -47,13 +47,18 @@ function rowsToObjects(rows){
   if(!rows.length)return[];
   const head=rows[0].map(h=>h.trim().toLowerCase());
   const idx=k=>head.findIndex(h=>h.startsWith(k));
-  const iCert=idx("certif"), iSito=idx("sito"), iEnte=idx("ente"), iNum=idx("numero"), iVal=idx("valid"), iLink=idx("link");
+  const iCategoria=idx("categoria"), iElemento=idx("elemento"), iTipo=idx("tipo"),
+    iCert=idx("certif"), iSito=idx("sito"), iEnte=idx("ente"),
+    iNum=idx("numero"), iRif=idx("riferimento"), iVal=idx("valid"),
+    iStato=idx("stato"), iLink=idx("link");
   return rows.slice(1).map(r=>({
-    certificazione:(iCert>=0?r[iCert]:"").trim(),
+    categoria:(iCategoria>=0?r[iCategoria]:"").trim(),
+    certificazione:(iElemento>=0?r[iElemento]:(iCert>=0?r[iCert]:"")).trim(),
     sito:(iSito>=0?r[iSito]:"").trim(),
+    tipo:(iTipo>=0?r[iTipo]:"").trim(),
     ente:(iEnte>=0?r[iEnte]:"").trim(),
-    numero:(iNum>=0?r[iNum]:"").trim(),
-    validita:(iVal>=0?r[iVal]:"").trim(),
+    numero:(iRif>=0?r[iRif]:(iNum>=0?r[iNum]:"")).trim(),
+    validita:(iStato>=0?r[iStato]:(iVal>=0?r[iVal]:"")).trim(),
     link:(iLink>=0?r[iLink]:"").trim()
   })).filter(o=>o.certificazione);
 }
@@ -64,14 +69,19 @@ function renderCerts(list){
   const box=document.getElementById("certContent");
   if(!box)return;
   if(!list.length){box.innerHTML='<div class="cert-state">Nessuna certificazione presente al momento.</div>';return;}
-  let html='<table class="cert-table"><thead><tr><th>Certificazione</th><th>Sito</th><th>Ente</th><th>Numero</th><th>Validità</th><th></th></tr></thead><tbody>';
+  const schemaEsteso=list.some(c=>c.tipo||c.categoria);
+  let html='<table class="cert-table"><thead><tr>'
+    +(schemaEsteso?'<th>Categoria</th><th>Elemento</th><th>Documento</th>':'<th>Certificazione</th>')
+    +'<th>Sito</th><th>Ente</th><th>Riferimento</th><th>Validità</th><th></th></tr></thead><tbody>';
   for(const c of list){
     const linkCell=c.link?'<a class="cert-link" href="'+esc(c.link)+'" target="_blank" rel="noopener">documento ↗</a>':'';
     html+='<tr>'
-      +'<td data-l="Certificazione" class="c-nome">'+esc(c.certificazione)+'</td>'
+      +(schemaEsteso?'<td data-l="Categoria" class="c-cat">'+(esc(c.categoria)||'—')+'</td>':'')
+      +'<td data-l="'+(schemaEsteso?'Elemento':'Certificazione')+'" class="c-nome">'+esc(c.certificazione)+'</td>'
+      +(schemaEsteso?'<td data-l="Documento" class="c-tipo">'+(esc(c.tipo)||'—')+'</td>':'')
       +'<td data-l="Sito" class="c-sito">'+(esc(c.sito)||'—')+'</td>'
       +'<td data-l="Ente" class="c-ente">'+(esc(c.ente)||'—')+'</td>'
-      +'<td data-l="Numero" class="c-num">'+(esc(c.numero)||'—')+'</td>'
+      +'<td data-l="Riferimento" class="c-num">'+(esc(c.numero)||'—')+'</td>'
       +'<td data-l="Validità" class="c-val">'+(c.validita?'<span class="badge">'+esc(c.validita)+'</span>':'')+'</td>'
       +'<td data-l="Documento">'+linkCell+'</td>'
       +'</tr>';

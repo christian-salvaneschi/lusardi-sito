@@ -123,11 +123,14 @@ section{padding:76px 0}
 .cert .sec-head h2{color:var(--bianco)}
 .cert .rule{background:var(--linea-scura)}
 .cert .intro{color:var(--grigio-ch);max-width:660px;margin-bottom:30px;font-size:16px}
-.cert-table{width:100%;border-collapse:collapse}
+#certContent{overflow-x:auto}
+.cert-table{width:100%;min-width:1120px;border-collapse:collapse}
 .cert-table thead th{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--giallo);text-align:left;padding:0 16px 12px;border-bottom:2px solid var(--giallo)}
 .cert-table tbody td{padding:18px 16px;border-bottom:1px solid var(--linea-scura);vertical-align:top;font-size:15px}
 .cert-table tbody tr:hover{background:#1b1e23}
 .cert-table .c-nome{font-family:var(--display);font-weight:800;font-size:17px}
+.cert-table .c-cat{color:var(--grigio-ch);font-family:var(--mono);font-size:12px}
+.cert-table .c-tipo{color:var(--chiaro);font-weight:600}
 .cert-table .c-sito{color:var(--chiaro);font-weight:600}
 .cert-table .c-ente{color:var(--chiaro)}
 .cert-table .c-num{font-family:var(--mono);font-size:13px;color:var(--grigio-ch)}
@@ -189,7 +192,8 @@ footer nav a{display:block}
   .foot-grid{grid-template-columns:1fr 1fr;gap:26px}
   .svc{grid-template-columns:1fr;gap:8px}
   .svc .idx{font-size:32px}
-  .cert-table,.cert-table thead,.cert-table tbody,.cert-table tr,.cert-table td{display:block;width:100%}
+  #certContent{overflow:visible}
+  .cert-table,.cert-table thead,.cert-table tbody,.cert-table tr,.cert-table td{display:block;width:100%;min-width:0}
   .cert-table thead{display:none}
   .cert-table tr{border:1px solid var(--linea-scura);margin-bottom:14px;padding:6px 0}
   .cert-table td{border:0!important;padding:8px 16px}
