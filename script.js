@@ -74,7 +74,8 @@ function renderCerts(list){
     +(schemaEsteso?'<th>Categoria</th><th>Elemento</th><th>Documento</th>':'<th>Certificazione</th>')
     +'<th>Sito</th><th>Ente</th><th>Riferimento</th><th>Validità</th><th></th></tr></thead><tbody>';
   for(const c of list){
-    const linkCell=c.link?'<a class="cert-link" href="'+esc(c.link)+'" target="_blank" rel="noopener">documento ↗</a>':'';
+    const linkUrl=c.link.replace('export=download','export=view');
+    const linkCell=linkUrl?'<a class="cert-link" href="'+esc(linkUrl)+'" target="_blank" rel="noopener">documento ↗</a>':'';
     html+='<tr>'
       +(schemaEsteso?'<td data-l="Categoria" class="c-cat">'+(esc(c.categoria)||'—')+'</td>':'')
       +'<td data-l="'+(schemaEsteso?'Elemento':'Certificazione')+'" class="c-nome">'+esc(c.certificazione)+'</td>'
