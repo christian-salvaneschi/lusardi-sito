@@ -29,7 +29,7 @@ A) PREPARA IL FOGLIO
    2. Riga 1 = intestazioni. Usa queste colonne (ordine libero, maiuscole
       e spazi indifferenti — il sito le riconosce automaticamente):
 
-        Certificazione | Ente | Numero | Validità | Link
+        Certificazione | Sito | Ente | Numero | Validità | Link
 
    3. Dalla riga 2, una certificazione per riga. Esempio già pronto:
 

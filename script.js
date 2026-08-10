@@ -7,19 +7,19 @@
    2) FORM_ENDPOINT: invio del form tramite FormSubmit.
    Istruzioni complete nel file ISTRUZIONI.txt.
    ========================================================= */
-const SHEET_CSV_URL = ""; // es: "https://docs.google.com/spreadsheets/d/e/XXXX/pub?gid=0&single=true&output=csv"
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRO61M4is-HQLUM7ejfXmIalrY6VIAG2alCVq79tHAxuF5ls9H9uTXTfJsQEfrdDgX2ExDgjYOw8ErV/pub?output=csv";
 const FORM_ENDPOINT = "https://formsubmit.co/ajax/chrjs75@gmail.com";
 
 /* Certificati reali dell'azienda — usati finché il foglio non è collegato.
    Sono anche il modello esatto delle colonne del foglio. */
 const DEMO = [
-  {certificazione:"Calcestruzzo CAM — Casarza Ligure",          ente:"ICMQ",  numero:"P854",           validita:"In corso di validità", link:""},
-  {certificazione:"Calcestruzzo CAM — Mezzanego",               ente:"ICMQ",  numero:"P855",           validita:"In corso di validità", link:""},
-  {certificazione:"Controllo produzione FPC — Casarza Ligure", ente:"ICMQ",  numero:"ICMQ-CLS-00881", validita:"In corso di validità", link:""},
-  {certificazione:"Controllo produzione FPC — CLS preconfezionato", ente:"ICMQ", numero:"ICMQ-CLS00880", validita:"In corso di validità", link:""},
-  {certificazione:"Sistema Qualità UNI EN ISO 9001:2015",       ente:"—",     numero:"22576",          validita:"In corso di validità", link:""},
-  {certificazione:"ISO 9001 — IQNet",                           ente:"IQNet", numero:"IT-104827",      validita:"In corso di validità", link:""},
-  {certificazione:"Aggregati per calcestruzzo e ingegneria",    ente:"—",     numero:"1305-CPR-1406",  validita:"In corso di validità", link:""}
+  {certificazione:"Calcestruzzo CAM", sito:"Casarza Ligure", ente:"ICMQ", numero:"P854", validita:"In corso di validità", link:""},
+  {certificazione:"Calcestruzzo CAM", sito:"Mezzanego", ente:"ICMQ", numero:"P855", validita:"In corso di validità", link:""},
+  {certificazione:"Controllo produzione FPC", sito:"Casarza Ligure", ente:"ICMQ", numero:"ICMQ-CLS-00881", validita:"In corso di validità", link:""},
+  {certificazione:"Controllo produzione FPC", sito:"Mezzanego", ente:"ICMQ", numero:"ICMQ-CLS00880", validita:"In corso di validità", link:""},
+  {certificazione:"Sistema Qualità UNI EN ISO 9001:2015", sito:"", ente:"—", numero:"22576", validita:"In corso di validità", link:""},
+  {certificazione:"ISO 9001", sito:"", ente:"IQNet", numero:"IT-104827", validita:"In corso di validità", link:""},
+  {certificazione:"Aggregati per calcestruzzo e opere di ingegneria", sito:"", ente:"—", numero:"1305-CPR-1406", validita:"In corso di validità", link:""}
 ];
 
 /* ---------- parser CSV (gestisce virgole tra virgolette) ---------- */
@@ -47,9 +47,10 @@ function rowsToObjects(rows){
   if(!rows.length)return[];
   const head=rows[0].map(h=>h.trim().toLowerCase());
   const idx=k=>head.findIndex(h=>h.startsWith(k));
-  const iCert=idx("certif"), iEnte=idx("ente"), iNum=idx("numero"), iVal=idx("valid"), iLink=idx("link");
+  const iCert=idx("certif"), iSito=idx("sito"), iEnte=idx("ente"), iNum=idx("numero"), iVal=idx("valid"), iLink=idx("link");
   return rows.slice(1).map(r=>({
     certificazione:(iCert>=0?r[iCert]:"").trim(),
+    sito:(iSito>=0?r[iSito]:"").trim(),
     ente:(iEnte>=0?r[iEnte]:"").trim(),
     numero:(iNum>=0?r[iNum]:"").trim(),
     validita:(iVal>=0?r[iVal]:"").trim(),
@@ -63,11 +64,12 @@ function renderCerts(list){
   const box=document.getElementById("certContent");
   if(!box)return;
   if(!list.length){box.innerHTML='<div class="cert-state">Nessuna certificazione presente al momento.</div>';return;}
-  let html='<table class="cert-table"><thead><tr><th>Certificazione</th><th>Ente</th><th>Numero</th><th>Validità</th><th></th></tr></thead><tbody>';
+  let html='<table class="cert-table"><thead><tr><th>Certificazione</th><th>Sito</th><th>Ente</th><th>Numero</th><th>Validità</th><th></th></tr></thead><tbody>';
   for(const c of list){
     const linkCell=c.link?'<a class="cert-link" href="'+esc(c.link)+'" target="_blank" rel="noopener">documento ↗</a>':'';
     html+='<tr>'
       +'<td data-l="Certificazione" class="c-nome">'+esc(c.certificazione)+'</td>'
+      +'<td data-l="Sito" class="c-sito">'+(esc(c.sito)||'—')+'</td>'
       +'<td data-l="Ente" class="c-ente">'+(esc(c.ente)||'—')+'</td>'
       +'<td data-l="Numero" class="c-num">'+(esc(c.numero)||'—')+'</td>'
       +'<td data-l="Validità" class="c-val">'+(c.validita?'<span class="badge">'+esc(c.validita)+'</span>':'')+'</td>'
