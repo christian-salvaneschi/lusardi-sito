@@ -40,8 +40,6 @@ A) PREPARA IL FOGLIO
     Calcestruzzo CAM — Casarza Ligure           | ICMQ  | P854          | In corso di validità |
     Calcestruzzo CAM — Mezzanego                | ICMQ  | P855          | In corso di validità |
     Controllo produzione FPC — CLS preconf.     | ICMQ  | ICMQ-CLS00880 | In corso di validità |
-    Sistema Qualità UNI EN ISO 9001:2015        |       | 22576         | In corso di validità |
-    ISO 9001 — IQNet                            | IQNet | IT-104827     | In corso di validità |
     Aggregati per calcestruzzo e ingegneria     |       | 1305-CPR-1406 | In corso di validità |
 
       - "Link" è opzionale: se metti l'URL del PDF del certificato, sul

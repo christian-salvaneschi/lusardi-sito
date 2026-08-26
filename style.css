@@ -34,6 +34,7 @@ header{position:sticky;top:0;z-index:50;background:var(--nero);border-bottom:3px
 .brand{font-family:var(--display);font-weight:900;color:var(--bianco);font-size:20px;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
 .brand-icon{width:auto;height:17px;display:block;flex:0 0 auto}
 .nav .brand-icon{height:28px}
+.nav .brand-logo{width:58px;height:46px;object-fit:contain;flex:0 0 auto}
 .nav ul{display:flex;gap:28px;list-style:none}
 .nav ul a{color:var(--chiaro);font-weight:500;font-size:14px;letter-spacing:.02em;padding:6px 0;position:relative}
 .nav ul a:hover{color:var(--bianco)}
@@ -42,6 +43,8 @@ header{position:sticky;top:0;z-index:50;background:var(--nero);border-bottom:3px
 .nav ul a.active{color:var(--bianco)}
 .call{background:var(--giallo);color:var(--nero);font-family:var(--display);font-weight:800;font-size:14px;padding:10px 18px;letter-spacing:.03em;transition:background .15s;white-space:nowrap}
 .call:hover{background:var(--bianco)}
+.call-multi{display:flex;align-items:center;gap:7px}
+.call-multi a:hover{text-decoration:underline}
 .menu-btn{display:none;background:none;border:0;cursor:pointer;padding:8px}
 .menu-btn span{display:block;width:24px;height:2px;background:var(--bianco);margin:5px 0}
 
@@ -226,6 +229,7 @@ footer nav a{display:block}
   .photo-home .hero{padding:64px 0 70px}
   .photo-home .nav .brand{font-size:17px;gap:8px}
   .photo-home .nav .brand-icon{height:24px}
+  .nav .brand-logo,.photo-home .nav .brand-logo{width:45px;height:38px}
   .photo-home .hero h1{font-size:clamp(34px,9vw,40px)}
   .photo-home .hero .loc{font-size:10px;letter-spacing:.1em}
   .photo-home .hero .sub{font-size:17px}
