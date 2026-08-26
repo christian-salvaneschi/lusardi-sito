@@ -30,11 +30,11 @@ img{max-width:100%;display:block}
 
 /* =============== HEADER =============== */
 header{position:sticky;top:0;z-index:50;background:var(--nero);border-bottom:3px solid var(--giallo)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:88px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:120px}
 .brand{font-family:var(--display);font-weight:900;color:var(--bianco);font-size:20px;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
 .brand-icon{width:auto;height:17px;display:block;flex:0 0 auto}
 .nav .brand-icon{height:28px}
-.nav .brand-logo{width:110px;height:82px;object-fit:contain;flex:0 0 auto}
+.nav .brand-logo{width:174px;height:auto;object-fit:contain;flex:0 0 auto}
 .nav ul{display:flex;gap:28px;list-style:none}
 .nav ul a{color:var(--chiaro);font-weight:500;font-size:14px;letter-spacing:.02em;padding:6px 0;position:relative}
 .nav ul a:hover{color:var(--bianco)}
@@ -174,7 +174,7 @@ form button{margin-top:20px;border:0}
 footer{background:var(--nero);color:var(--grigio-ch);padding:52px 0 30px}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
 footer .brand{margin-bottom:14px;flex-direction:column;align-items:flex-start;gap:10px}
-footer .brand-logo{width:150px;height:105px;object-fit:contain;object-position:left center}
+footer .brand-logo{width:174px;height:auto;object-fit:contain;object-position:left center}
 footer h4{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--giallo);margin-bottom:12px}
 footer p,footer a{font-size:14px;line-height:1.7}
 footer a:hover{color:var(--bianco)}
@@ -182,10 +182,10 @@ footer nav a{display:block}
 .foot-bar{border-top:1px solid var(--linea-scura);padding-top:20px;font-size:12px;font-family:var(--mono);letter-spacing:.04em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
 /* =============== RESPONSIVE =============== */
-@media(max-width:860px){
+@media(max-width:1100px){
   .nav ul,.nav .call{display:none}
-  .menu-btn{display:block}
-  .nav ul.open{display:flex;position:absolute;top:88px;left:0;right:0;background:var(--nero);flex-direction:column;padding:16px 24px;gap:4px;border-bottom:3px solid var(--giallo)}
+  .menu-btn{display:block;position:absolute;right:24px;top:50%;z-index:2;width:40px;height:40px;transform:translateY(-50%)}
+  .nav ul.open{display:flex;position:absolute;top:120px;left:0;right:0;background:var(--nero);flex-direction:column;padding:16px 24px;gap:4px;border-bottom:3px solid var(--giallo)}
   .nav ul.open a{padding:12px 0}
   .grid3,.grid2,.plant{grid-template-columns:1fr}
   .specs .row{grid-template-columns:1fr}
@@ -228,11 +228,12 @@ footer nav a{display:block}
 }
 @media(max-width:620px){
   .photo-home .hero{padding:64px 0 70px}
-  .nav{height:76px}
-  .photo-home .nav .brand{font-size:17px;gap:8px}
+  .nav{height:100px}
+  .nav .brand,.photo-home .nav .brand{font-size:0;gap:0}
   .photo-home .nav .brand-icon{height:24px}
-  .nav .brand-logo,.photo-home .nav .brand-logo{width:78px;height:62px}
-  .nav ul.open{top:76px}
+  .nav .brand-logo,.photo-home .nav .brand-logo{width:132px;height:auto}
+  .menu-btn{position:fixed;right:24px;top:30px;transform:none}
+  .nav ul.open{top:100px}
   .photo-home .hero h1{font-size:clamp(34px,9vw,40px)}
   .photo-home .hero .loc{font-size:10px;letter-spacing:.1em}
   .photo-home .hero .sub{font-size:17px}
