@@ -173,7 +173,8 @@ form button{margin-top:20px;border:0}
 /* =============== FOOTER =============== */
 footer{background:var(--nero);color:var(--grigio-ch);padding:52px 0 30px}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
-footer .brand{margin-bottom:14px}
+footer .brand{margin-bottom:14px;flex-direction:column;align-items:flex-start;gap:10px}
+footer .brand-logo{width:150px;height:105px;object-fit:contain;object-position:left center}
 footer h4{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--giallo);margin-bottom:12px}
 footer p,footer a{font-size:14px;line-height:1.7}
 footer a:hover{color:var(--bianco)}
