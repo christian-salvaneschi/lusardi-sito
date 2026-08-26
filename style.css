@@ -227,6 +227,15 @@ footer nav a{display:block}
   .photo-home .production-photo{min-height:320px;max-height:480px}
 }
 @media(max-width:620px){
+  section{padding:56px 0}
+  .wrap{padding-left:20px;padding-right:20px}
+  .phero{padding:44px 0 42px}
+  .phero h1{font-size:clamp(32px,9vw,38px)}
+  .sec-head{align-items:flex-start;gap:8px;margin-bottom:26px}
+  .sec-head .num{flex-basis:100%}
+  .sec-head h2{font-size:clamp(27px,8vw,32px)}
+  .sec-head .rule{display:none}
+  .svc{padding:28px 0}
   .photo-home .hero{padding:64px 0 70px}
   .nav{height:100px}
   .nav .brand,.photo-home .nav .brand{font-size:0;gap:0}
