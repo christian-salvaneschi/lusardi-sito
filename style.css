@@ -236,6 +236,13 @@ footer nav a{display:block}
   .sec-head h2{font-size:clamp(27px,8vw,32px)}
   .sec-head .rule{display:none}
   .svc{padding:28px 0}
+  body:not(.photo-home) .hero{padding:48px 0 60px}
+  body:not(.photo-home) .hero .wrap{padding-right:20px}
+  body:not(.photo-home) .hero-logo{width:min(76vw,290px);margin:0 auto 28px}
+  body:not(.photo-home) .hero h1{font-size:clamp(40px,12vw,50px)}
+  body:not(.photo-home) .hero .sub{font-size:17px}
+  body:not(.photo-home) .hero .actions{flex-direction:column;align-items:stretch}
+  body:not(.photo-home) .hero .actions .btn{justify-content:center;text-align:center}
   .photo-home .hero{padding:64px 0 70px}
   .nav{height:100px}
   .nav .brand,.photo-home .nav .brand{font-size:0;gap:0}
