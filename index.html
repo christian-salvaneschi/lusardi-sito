@@ -34,7 +34,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="photo-home">
 
 <header>
   <nav class="wrap nav">
@@ -50,109 +50,97 @@
   </nav>
 </header>
 
-<div class="hero">
-  <div class="wrap">
-    <img class="hero-logo" src="assets/logo-lusardi-trasparente.png" alt="Lusardi Calcestruzzi srl" width="1536" height="1024">
-    <div class="loc">Casarza Ligure (GE) · da oltre vent'anni</div>
-    <h1>LUSARDI<br><span class="col">CALCESTRUZZI</span></h1>
-    <p class="sub">Produzione e fornitura di calcestruzzo preconfezionato, manufatti su misura e aggregati da riciclo. Prodotto certificato, attrezzature all'avanguardia, servizio su tutto il levante ligure.</p>
-    <div class="actions">
-      <a class="btn btn-y" href="contatti">Richiedi un preventivo</a>
-      <a class="btn btn-o" href="i-nostri-servizi">Scopri i servizi</a>
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="loc">Casarza Ligure (GE) · da oltre vent'anni</div>
+        <h1>LUSARDI<br><span class="col">CALCESTRUZZI</span></h1>
+        <p class="sub">Produzione e fornitura di calcestruzzo preconfezionato, manufatti su misura e aggregati da riciclo. Prodotto certificato, attrezzature all'avanguardia, servizio su tutto il Levante ligure.</p>
+        <div class="actions">
+          <a class="btn btn-y" href="contatti">Richiedi un preventivo</a>
+          <a class="btn btn-o" href="i-nostri-servizi">Scopri i servizi</a>
+        </div>
+      </div>
+      <figure class="hero-media">
+        <img class="hero-photo" src="assets/sito-originale/22-lusardi-calcestruzzi-1-1920w.jpg" alt="Autobetoniere Lusardi durante un getto di calcestruzzo nel Levante ligure" width="1920" height="1440">
+        <img class="hero-mark" src="assets/logo-lusardi-trasparente.png" alt="Lusardi Calcestruzzi srl" width="1536" height="1024">
+        <figcaption class="photo-caption">Fornitura in cantiere · Levante ligure</figcaption>
+      </figure>
     </div>
   </div>
-</div>
 
-<div class="specs">
-  <div class="wrap"><div class="row">
-    <div class="cell"><div class="k">Preconfezionato</div><div class="v">Standard, a prestazione o a composizione richiesta</div></div>
-    <div class="cell"><div class="k">Manufatti</div><div class="v">Blocchi da ormeggio, Lego Block, cordoli, fioriere</div></div>
-    <div class="cell"><div class="k">Recupero</div><div class="v">Aggregati da riciclo e materiali edili</div></div>
-  </div></div>
-</div>
-
-<section id="produzione">
-  <div class="wrap">
-    <div class="sec-head"><span class="num">01</span><h2>La produzione</h2><span class="rule"></span></div>
-    <div class="lead prose">
-      <p>La <strong>Lusardi Calcestruzzi srl</strong> ha sede a Casarza Ligure, in provincia di Genova, e opera da più di un ventennio nella produzione e fornitura di calcestruzzo preconfezionato.</p>
-      <p>L'azienda si occupa anche del recupero delle macerie edili, producendo aggregati da riciclo e materiali edili in generale, e svolge attività di scavo, demolizione e trasporto in conto proprio e in conto terzi. Uno staff specializzato e un parco macchine all'avanguardia sono a disposizione del cliente per personalizzare al meglio prodotti e servizi.</p>
-    </div>
+  <div class="specs">
+    <div class="wrap"><div class="row">
+      <div class="cell"><div class="k">Preconfezionato</div><div class="v">Standard, a prestazione o a composizione richiesta</div></div>
+      <div class="cell"><div class="k">Manufatti</div><div class="v">Blocchi da ormeggio, Lego Block, cordoli, fioriere</div></div>
+      <div class="cell"><div class="k">Recupero</div><div class="v">Aggregati da riciclo e materiali edili</div></div>
+    </div></div>
   </div>
-</section>
 
-<section id="prodotti" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head"><span class="num">02</span><h2>Prodotti e servizi</h2><span class="rule"></span></div>
-    <div class="grid3">
-      <div class="card">
-        <h3><span class="bar"></span>Calcestruzzo</h3>
-        <ul>
-          <li>CAM — Certificato CP DOC 262</li>
-          <li>A prestazione garantita</li>
-          <li>A composizione richiesta</li>
-          <li>Con aggregati da riciclo</li>
-          <li>Architettonico e colorato</li>
-          <li>Con polistirolo</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3><span class="bar"></span>Manufatti</h3>
-        <ul>
-          <li>Blocchi da ormeggio navale (misure personalizzate)</li>
-          <li>Lego Block, anche con facciavista in pietra</li>
-          <li>Fioriere in cemento personalizzabili</li>
-          <li>Cordoli stradali</li>
-          <li>Blocchetti per murature</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3><span class="bar"></span>Materiali</h3>
-        <ul>
-          <li>Decori da recupero (mattoni, piastrelle, cementine)</li>
-          <li>Pietre per rivestimento muri</li>
-          <li>Aggregati da recupero</li>
-        </ul>
+  <section id="produzione">
+    <div class="wrap">
+      <div class="sec-head"><span class="num">01</span><h2>La produzione</h2><span class="rule"></span></div>
+      <div class="production-layout">
+        <img class="production-photo" src="assets/sito-originale/29-Lusardi-calcestruzzi-6-d4c786df-1920w.jpg" alt="Impianto e autobetoniere Lusardi Calcestruzzi" width="1920" height="1440" loading="lazy">
+        <div class="lead prose">
+          <p>La <strong>Lusardi Calcestruzzi srl</strong> ha sede a Casarza Ligure, in provincia di Genova, e opera da più di un ventennio nella produzione e fornitura di calcestruzzo preconfezionato.</p>
+          <p>L'azienda si occupa anche del recupero delle macerie edili, producendo aggregati da riciclo e materiali edili in generale, e svolge attività di scavo, demolizione e trasporto in conto proprio e in conto terzi.</p>
+          <p>Uno staff specializzato e un parco macchine all'avanguardia sono a disposizione del cliente per personalizzare prodotti, consegna e servizi.</p>
+          <a class="btn btn-d" href="i-nostri-impianti">Scopri i nostri impianti →</a>
+        </div>
       </div>
     </div>
-    <div style="margin-top:28px">
-      <a class="btn btn-d" href="i-nostri-servizi">Tutti i servizi in dettaglio →</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="cta">
-  <div class="wrap">
-    <h2>Serve un preventivo?</h2>
-    <p>Chiamaci: valutiamo insieme prodotto, quantità e logistica di consegna.</p>
-    <a class="btn btn-d" href="tel:+39018546266">☎ +39 0185 46266</a>
-  </div>
-</section>
+  <section id="prodotti" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="num">02</span><h2>Prodotti e servizi</h2><span class="rule"></span></div>
+      <div class="grid3">
+        <article class="card photo-card">
+          <img src="assets/sito-originale/18-71990920_lel-1920w.jpg" alt="Applicazione di malta e calcestruzzo in cantiere" width="1920" height="1282" loading="lazy">
+          <div class="photo-card-content">
+            <h3><span class="bar"></span>Calcestruzzo</h3>
+            <ul><li>CAM — Certificato CP DOC 262</li><li>A prestazione garantita</li><li>A composizione richiesta</li><li>Con aggregati da riciclo</li><li>Architettonico e colorato</li></ul>
+          </div>
+        </article>
+        <article class="card photo-card">
+          <img src="assets/sito-originale/13-165723277_lel-2880w.jpg" alt="Manufatti in calcestruzzo pronti per la consegna" width="1920" height="1280" loading="lazy">
+          <div class="photo-card-content">
+            <h3><span class="bar"></span>Manufatti</h3>
+            <ul><li>Blocchi da ormeggio su misura</li><li>Lego Block anche facciavista</li><li>Fioriere personalizzabili</li><li>Cordoli e blocchetti per murature</li></ul>
+          </div>
+        </article>
+        <article class="card photo-card">
+          <img src="assets/sito-originale/11-123733143_lel-1--2880w.jpg" alt="Escavatore impegnato nel recupero di macerie edili" width="1920" height="1282" loading="lazy">
+          <div class="photo-card-content">
+            <h3><span class="bar"></span>Recupero</h3>
+            <ul><li>Recupero macerie edili</li><li>Produzione di aggregati riciclati</li><li>Scavo e demolizione</li><li>Trasporto conto proprio e terzi</li></ul>
+          </div>
+        </article>
+      </div>
+      <div style="margin-top:28px"><a class="btn btn-d" href="i-nostri-servizi">Tutti i servizi in dettaglio →</a></div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Serve un preventivo?</h2>
+      <p>Chiamaci: valutiamo insieme prodotto, quantità e logistica di consegna.</p>
+      <a class="btn btn-d" href="tel:+39018546266">☎ +39 0185 46266</a>
+    </div>
+  </section>
+</main>
 
 <footer>
   <div class="wrap">
     <div class="foot-grid">
-      <div>
-        <div class="brand"><img class="brand-icon" src="assets/favicon.png" alt="">LUSARDI CALCESTRUZZI</div>
-        <p>Calcestruzzo preconfezionato, manufatti e aggregati da riciclo. Casarza Ligure (GE).</p>
-      </div>
-      <div>
-        <h4>Pagine</h4>
-        <nav><a href="./">Home</a><a href="i-nostri-servizi">Servizi</a><a href="i-nostri-impianti">Impianti e certificazioni</a><a href="contatti">Contatti</a></nav>
-      </div>
-      <div>
-        <h4>Sede</h4>
-        <p>Via per Masso, 10<br>16030 Casarza Ligure (GE)</p>
-      </div>
-      <div>
-        <h4>Recapiti</h4>
-        <p><a href="tel:+39018546266">+39 0185 46266</a><br><a href="mailto:lusardicls@gmail.com">lusardicls@gmail.com</a></p>
-      </div>
+      <div><div class="brand"><img class="brand-icon" src="assets/favicon.png" alt="">LUSARDI CALCESTRUZZI</div><p>Calcestruzzo preconfezionato, manufatti e aggregati da riciclo. Casarza Ligure (GE).</p></div>
+      <div><h4>Pagine</h4><nav><a href="./">Home</a><a href="i-nostri-servizi">Servizi</a><a href="i-nostri-impianti">Impianti e certificazioni</a><a href="contatti">Contatti</a></nav></div>
+      <div><h4>Sede</h4><p>Via per Masso, 10<br>16030 Casarza Ligure (GE)</p></div>
+      <div><h4>Recapiti</h4><p><a href="tel:+39018546266">+39 0185 46266</a><br><a href="mailto:lusardicls@gmail.com">lusardicls@gmail.com</a></p></div>
     </div>
-    <div class="foot-bar">
-      <span>© <span id="year"></span> Lusardi Calcestruzzi srl · P.IVA 01069330999</span>
-      <span>Casarza Ligure (GE) · Liguria</span>
-    </div>
+    <div class="foot-bar"><span>© <span id="year"></span> Lusardi Calcestruzzi srl · P.IVA 01069330999</span><span>Casarza Ligure (GE) · Liguria</span></div>
   </div>
 </footer>
 
