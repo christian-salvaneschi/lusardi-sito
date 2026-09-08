@@ -206,7 +206,7 @@ footer nav a{display:block}
 @media(max-width:520px){.foot-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
-/* =============== HOME FOTOGRAFICA (index2) =============== */
+/* =============== HOME FOTOGRAFICA =============== */
 .photo-home .hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr);gap:54px;align-items:center;padding-right:24px}
 .photo-home .hero-copy{position:relative;z-index:2}
 .photo-home .hero h1{font-size:clamp(46px,7.2vw,92px)}
