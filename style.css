@@ -117,7 +117,6 @@ section{padding:76px 0}
 .svc ul li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;background:var(--giallo);transform:skewX(-12deg)}
 .svc-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;height:300px;margin:16px 0 20px;overflow:hidden;background:var(--linea)}
 .svc-gallery.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-.svc-gallery.four{height:604px}
 .svc-gallery img{width:100%;height:100%;object-fit:cover}
 
 /* impianti */
@@ -267,5 +266,4 @@ footer nav a{display:block}
   .photo-home .photo-card img{height:210px}
   .photo-home .photo-card-media{height:210px}
   .svc-gallery{height:195px;margin:14px 0 18px}
-  .svc-gallery.four{height:390px}
 }
