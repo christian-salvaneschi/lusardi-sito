@@ -6,7 +6,7 @@
    Istruzioni complete nel file ISTRUZIONI.txt.
    ========================================================= */
 const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRO61M4is-HQLUM7ejfXmIalrY6VIAG2alCVq79tHAxuF5ls9H9uTXTfJsQEfrdDgX2ExDgjYOw8ErV/pub?output=csv";
-const FORM_ENDPOINT = "https://formsubmit.co/ajax/chrjs75@gmail.com";
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/lusardicls@gmail.com";
 
 /* ---------- parser CSV (gestisce virgole tra virgolette) ---------- */
 function parseCSV(text){
