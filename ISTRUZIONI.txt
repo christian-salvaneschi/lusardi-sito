@@ -74,7 +74,7 @@ C) COLLEGA
      1. Account gratuito su pages.cloudflare.com
      2. "Create a project" -> "Direct Upload" -> trascina TUTTI i file
         (o l'intera cartella). HTTPS e CDN inclusi, gratis.
-     3. Colleghi poi il dominio lusardicalcestruzzi.com.
+     3. Colleghi poi il dominio www.lusardicalcestruzzi.com.
    Alternative gratuite equivalenti: Netlify (netlify.com), GitHub Pages.
 
    DOMINIO
